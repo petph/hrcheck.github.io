@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import './App.css';
 
-function getRandomInt(min, max) {
+function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
 function App() {
-  const [position, setPosition] = useState({ position: 'relative', left: 0, top: 0 });
+  const [position, setPosition] = useState({ left: 0, top: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
   const getClickYes = () => {
@@ -22,7 +22,6 @@ function App() {
       setIsHovered(true);
     }
     setPosition({
-      position: 'absolute',
       left: getRandomInt(10, 80),
       top: getRandomInt(10, 80)
     });
@@ -38,12 +37,11 @@ function App() {
         <button id='yes' onClick={getClickYes}>Да</button>
         <button
           id='no'
-          style={{ position: position.position, left: `${position.left}%`, top: `${position.top}%` }}
+          style={{ position: 'absolute', left: `${position.left}%`, top: `${position.top}%` }}
           onMouseEnter={moveButton}
         >
           Нет
         </button>
-
       </div>
     </div>
   );
